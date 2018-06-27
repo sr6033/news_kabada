@@ -1,4 +1,4 @@
-# news_kabada
+![news_kabada](news_kabada.svg)
 
 It will scrap the headlines of today's news from Yahoo news. It then opens up the list of headlines in your default browser.
 

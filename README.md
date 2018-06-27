@@ -1,5 +1,6 @@
-<span style="display:block;text-align:center">![news_kabada](news_kabada.png)</span>
-
+<p align="center">
+  <img src="news_kabada.png">
+</p>
 It will scrap the headlines of today's news from Yahoo news. It then opens up the list of headlines in your default browser.
 
 # Installation

@@ -1,7 +1,11 @@
 <p align="center">
   <img src="news_kabada.png">
 </p>
-It will scrap the headlines of today's news from Yahoo news. It then opens up the list of headlines in your default browser.
+It will scrap the headlines of today's news from Yahoo news. It then gives a notification and opens up the list of headlines in your default browser.
+
+<p align="center">
+  <img src="screenshot.png">
+</p>
 
 # Installation
 

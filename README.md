@@ -15,7 +15,6 @@ It will scrap the headlines of today's news from Yahoo news. It then opens up th
 - [ ] Category filters
 
 # Contribution
-
 I am open to suggestions and contributions. Feel free to pull up issues for any modifications or enhancements.
 ---
 

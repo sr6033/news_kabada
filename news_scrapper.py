@@ -7,14 +7,17 @@ news_page = 'https://www.yahoo.com/news/'
 page = urllib2.urlopen(news_page)
 soup = BeautifulSoup(page, 'html.parser')
 
-headlines_list = soup.find_all('h3')
+category = soup.find_all('div', {'data-test-locator':'catlabel'})
+headline = soup.find_all('h3', class_="Mb(5px)")
+headlines_list = []
+for index, i in enumerate(category):
+    headlines_list.append(i.text + ': ' + headline[index].text)
 
 index = 1
 news_list = []
 for headline in headlines_list:
 	#headline_link = headline.find('a')
 	#print headline_link
-	headline = headline.text.strip()
 	news_list.append(headline)
 	index += 1
 

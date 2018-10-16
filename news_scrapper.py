@@ -53,7 +53,7 @@ def notify(title):
 
                 </style>
                 </head>
-                <body style='background:#ededed'>
+                <body style='background:#353434'>
                     <h1 class="jumbotron" id="heading">
                        <center>Today's News</center>
                     </h1>

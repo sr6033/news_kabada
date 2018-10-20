@@ -31,44 +31,43 @@ for headline in headlines_list:
 
 # The notifier function
 def notify(title):
-	t = '-title {!r}'.format(title)
-	m = '-message {!r}'.format(' ')
-	os.system('terminal-notifier {}'.format(' '.join([m, t])))
+    t = '-title {!r}'.format(title)
+    m = '-message {!r}'.format(' ')
+    os.system('terminal-notifier {}'.format(' '.join([m, t])))
 
     file = codecs.open("news.html", "w", "utf-8")
     style = '''
-                <html>
-                <head>
-                    <title>
-                        Today's News
-                    </title>
-                    <!--Beautification-->
+		<html>
+		<head>
+		<title>
+		Today's News
+		</title>
+		<!--Beautification-->
 
-                        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-    <style>
-        .list-group {
-            font-family: 'Ubuntu Mono';font-size: 22px;
-        }
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+		<style>
+		.list-group {
+		font-family: 'Ubuntu Mono';font-size: 22px;
+		}
 
-        #heading{
-                    font-family: 'Ubuntu';
-        }
+		#heading{
+		font-family: 'Ubuntu';
+		}
 
-                </style>
-                </head>
-                <body style='background:#353434'>
-                    <h1 class="jumbotron" id="heading">
-                       <center>Today's News</center>
-                    </h1>
-                    <div class="container-fluid">
-
-                        <ul class="list-group">'''
+		</style>
+		</head>
+		<body style='background:#353434'>
+		<h1 class="jumbotron" id="heading">
+		<center>Today's News</center>
+		</h1>
+		<div class="container-fluid">
+        <ul class="list-group">'''
     file.write(style)
     for i, headline in enumerate(news_list):
-        file.write('<li class="list-group-item"> <a href=>' 
-                + urls_list 
-                + '>' 
+        file.write('<li class="list-group-item"> <a href="' 
+                + urls_list[i] 
+                + '" target="_blank">' 
                 + headline 
                 + '</a></li>')
 

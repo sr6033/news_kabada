@@ -7,7 +7,6 @@ import urllib2
 from bs4 import BeautifulSoup
 import os, codecs
 
-
 #news_page = 'https://www.yahoo.com/news/'
 news_page = 'https://news.google.com/'
 
@@ -18,18 +17,23 @@ headlines_list = soup.find_all('h3')
 
 index = 1
 news_list = []
+urls_list = []
 for headline in headlines_list:
-    #headline_link = headline.find('a')
-    #print headline_link
-    headline = headline.text.strip()
-    news_list.append(headline)
-    index += 1
+	#headline_link = headline.find('a')
+	#print headline_link
+	url = headline.parent.get('href')
+	if not url:
+		url = headline.find('a').get('href')
+	headline = headline.text.strip()
+	news_list.append(headline)
+	urls_list.append(news_page + url)
+	index += 1
 
 # The notifier function
 def notify(title):
-    t = '-title {!r}'.format(title)
-    m = '-message {!r}'.format(' ')
-    os.system('terminal-notifier {}'.format(' '.join([m, t])))
+	t = '-title {!r}'.format(title)
+	m = '-message {!r}'.format(' ')
+	os.system('terminal-notifier {}'.format(' '.join([m, t])))
 
     file = codecs.open("news.html", "w", "utf-8")
     style = '''
@@ -61,11 +65,18 @@ def notify(title):
 
                         <ul class="list-group">'''
     file.write(style)
-    for headline in news_list:
-        file.write('<li class="list-group-item">' + headline + '</li>')
+    for i, headline in enumerate(news_list):
+        file.write('<li class="list-group-item"> <a href=>' 
+                + urls_list 
+                + '>' 
+                + headline 
+                + '</a></li>')
+
     file.write("</ul> </div> </body>")
+    
     file.close()
     #os.system("open news.html")
+
     webbrowser.open_new_tab("news.html") ## Opens the generated file in new tab
 
 # Calling the function

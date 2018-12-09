@@ -38,13 +38,45 @@ def notify(title):
     os.system('terminal-notifier {}'.format(' '.join([m, t])))
 
     file = codecs.open("news.html", "w", "utf-8")
-    style = "<html><head><title>Today's News</title></head> <body style='background:#ededed'> <h3>Today's News</h3> <ul>"
+    style = '''
+		<html>
+		<head>
+		<title>
+		Today's News
+		</title>
+		<!--Beautification-->
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+		<style>
+		.list-group {
+		font-family: 'Ubuntu Mono';font-size: 22px;
+		}
+
+		#heading{
+		font-family: 'Ubuntu';
+		}
+
+		</style>
+		</head>
+		<body style='background:#353434'>
+		<h1 class="jumbotron" id="heading">
+		<center>Today's News</center>
+		</h1>
+		<div class="container-fluid">
+        <ul class="list-group">'''
     file.write(style)
     for headline, url in news_list_dict.iteritems():
-        file.write("<li>" + headline + url +'</li>')
+         file.write('<li class="list-group-item"> <a href="' 
+                + url
+                + '" target="_blank">' 
+                + headline 
+                + '</a></li>')
     file.write("</ul> </body>")
     file.close()
-    os.system("open news.html")
+    #os.system("open news.html")
+    webbrowser.open_new_tab("news.html") ## Opens the generated file in new tab
+
 
         
 # Calling the function

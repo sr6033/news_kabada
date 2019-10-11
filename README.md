@@ -10,7 +10,7 @@ It will scrap the headlines of today's news from Yahoo! news. It then gives a no
 # Installation
 
 - Download the python file.
-- Type `crontab -e` in your terminal.
+- Type `crontab -e` in your terminal. (For windows follow this [link](https://stackoverflow.com/questions/7195503/setting-up-a-cron-job-in-windows)
 - Add this line: `@reboot /absolute/path/to/python2.7 /absolute/path/to/news_scrapper.py`
 
 # To do
